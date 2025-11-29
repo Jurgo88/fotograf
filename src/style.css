@@ -1,0 +1,333 @@
+@font-face {
+  font-family: "MyFont";
+  src: url("/src/fonts/QUICHE\ DISPLAY\ REGULAR.woff") format("truetype");
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+    font-family: "MyFont";
+}
+
+/* HLAVNÝ OBAL */
+.HOME {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #fff;
+}
+
+/* LOGO */
+.HOME .LOGO {
+    position: fixed;
+    top: 34px;
+    left: 107px;
+    width: 274px;
+    height: auto;
+}
+
+/* --- HAMBURGER MENU (Desktop) --- */
+
+/* Skrytie samotného checkboxu */
+.hidden-checkbox {
+    display: none; 
+}
+
+/* HAMBURGER MENU - Všeobecné nastavenia */
+.hamburger-menu {
+    display: none; /* Štandardne skryté na veľkej obrazovke */
+    position: fixed;
+    top: 40px;
+    right: 40px;
+    width: 30px;
+    height: 24px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    z-index: 1000;
+    padding: 0;
+}
+
+.hamburger-menu span {
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: #111;
+    margin: 5px 0;
+    transition: 0.3s ease;
+}
+
+/* NAVBAR – vľavo, moderný font (Desktop) */
+.HOME .NAVBAR {
+    position: fixed;
+    top: 350px;
+    left: 150px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    z-index: 999;
+    text-align: center;
+}
+
+.HOME .NAVBAR a {
+    text-decoration: none; 
+    /* font-family: "Playfair Display", serif; */
+    font-weight: 600;
+    font-size: 30px;
+    color: #111;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.HOME .NAVBAR a:hover,
+.HOME .NAVBAR a.active {
+    transform: translateX(6px);
+    opacity: 0.8;
+}
+
+/* --- GRID OBRAZKOV (Desktop) --- */
+.HOME .GRID {
+    margin-left: 30%;
+    /* miesto pre navbar */
+    width: 70%;
+    /* pravá časť */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* max 3 vedľa seba */
+    gap: 25px;
+    padding: 50px 40px;
+    margin-top: 150px;
+    /* odsun pod logo */
+}
+
+/* 1. ŠTÝLY PRE STRÁNKU HOME (Podlhovasté fotky - platí pre neobalené IMG) */
+.HOME .GRID .rectangle {
+    width: 100%;
+    height: auto; 
+    object-fit: cover;
+    border-radius: 10px;
+    transition: 0.2s ease;
+}
+
+.HOME .GRID .rectangle:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+    opacity: 0.95;
+}
+
+
+/* 2. ŠTÝLY PRE STRÁNKU GALÉRIA (Štvorcové fotky - prepisuje sa cez GALLERY-PAGE) */
+
+/* Kontajner pre štvorec */
+.GALLERY-PAGE .GRID .grid-item-square {
+    padding-bottom: 100%; /* Vytvorí štvorec (výška = šírka) */
+    position: relative;
+    overflow: hidden; 
+    border-radius: 10px; 
+    transition: 0.2s ease;
+}
+
+.GALLERY-PAGE .GRID .grid-item-square:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+    opacity: 0.95;
+}
+
+/* Obrázky vo vnútri štvorcového kontajnera */
+.GALLERY-PAGE .GRID .grid-item-square .rectangle {
+    width: 100%;
+    height: 100%;
+    position: absolute; 
+    top: 0;
+    left: 0;
+    object-fit: cover; /* Oreže obrázok, aby vyplnil štvorec */
+}
+
+
+/* --- OSTATNÉ ŠTÝLY (Desktop) --- */
+.OMNE .text-about {
+    margin-left: 40%;
+    max-width: 750px;
+    top: 34px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.55;
+    font-family: "Playfair Display", serif;
+    letter-spacing: 0.3px;
+    word-spacing: 1px;
+    color: #222;
+}
+
+.self-photo  {
+    margin-left: 50%;
+}
+
+.CONTACT .text-contact {
+    margin-top: 150px;
+    margin-left: 40%;
+    max-width: 750px;
+    top: 34px;
+    text-align: center;
+    font-size: 20px;
+    line-height: 1.55;
+    font-family: "Playfair Display", serif;
+    letter-spacing: 0.3px;
+    word-spacing: 1px;
+    color: #222;
+}
+
+.CONTACT .social {
+    margin-left: 60%;
+}
+
+
+
+
+
+/* #################################################################### */
+/* 📱 MEDIA QUERIES PRE MOBILNÉ ZOBRAZENIE (max-width: 768px) */
+/* #################################################################### */
+
+@media (max-width: 768px) {
+
+    /* --- LOGO --- */
+    .HOME .LOGO {
+        position: static; 
+        margin: 30px auto 0;
+        left: auto;
+        top: auto;
+        width: 150px;
+        display: block;
+    }
+    
+    /* --- Zobraziť Hamburger menu na mobile --- */
+    .hamburger-menu {
+        display: block; 
+        position: absolute; 
+        top: 30px;
+        right: 20px;
+    }
+
+    /* --- NAVBAR - Vysunutie pod logo --- */
+    .HOME .NAVBAR {
+        position: static; 
+        top: auto;
+        left: auto;
+        width: 100%;
+        height: auto;
+        background-color: transparent; 
+        
+        flex-direction: column; 
+        justify-content: center;
+        align-items: center;
+        gap: 15px; 
+        
+        overflow: hidden;
+        max-height: 0; 
+        transition: max-height 0.4s ease-in-out, padding 0.4s ease-in-out;
+        z-index: 990;
+        padding: 0 0;
+    }
+
+    .HOME .NAVBAR a {
+        font-size: 18px; 
+        font-weight: 500;
+        transform: none !important; 
+    }
+
+    /* KĽÚČOVÁ ČASŤ BEZ JAVASCRIPTU: Zobrazenie menu */
+    #menu-toggle:checked ~ .NAVBAR {
+        max-height: 300px; 
+        padding: 20px 0; 
+    }
+
+    /* Animácia hamburger ikonky (premena na X) */
+    #menu-toggle:checked ~ .hamburger-menu span:nth-child(2) {
+        opacity: 0;
+    }
+    #menu-toggle:checked ~ .hamburger-menu span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+    #menu-toggle:checked ~ .hamburger-menu span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+
+    /* --- GRID OBRAZKOV (Mobil) - 3 stĺpce pre Home aj Galériu --- */
+    .HOME .GRID {
+        margin-left: 0;
+        width: 100%;
+        grid-template-columns: repeat(3, 1fr); 
+        gap: 10px; 
+        padding: 20px 10px;
+        margin-top: 0;
+    }
+
+    /* --- O MNE / KONTAKT texty (Mobil) --- */
+    .OMNE .text-about,
+    .CONTACT .text-contact {
+        margin-left: 0;
+        padding: 20px;
+        text-align: left;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+
+    .self-photo {
+        margin-left: 0;
+        text-align: center;
+    }
+    
+    .CONTACT .social {
+        margin-left: 0;
+        text-align: center;
+        padding-bottom: 50px;
+    }
+}
+
+.form {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: "MyFont", serif; /* Tu môžeš dať svoj font */
+}
+
+.row {
+  display: flex;
+  gap: 20px;
+}
+
+.field {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 14px;
+  margin-bottom: 5px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+input, textarea {
+  padding: 12px;
+  border: 1px solid #d0d4d8;
+  border-radius: 4px;
+  background: #fffdf8;
+  font-size: 16px;
+}
+
+/* Pre veľmi malé obrazovky (extra mobil) - len jeden stĺpec v gride */
+@media (max-width: 480px) {
+    .HOME .GRID {
+        grid-template-columns: 1fr; 
+        gap: 15px;
+        padding: 20px 15px;
+    }
+    .hamburger-menu {
+        right: 15px;
+    }
+}
