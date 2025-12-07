@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="sk">
 <head>
@@ -5,57 +6,127 @@
   <meta charset="utf-8" />
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
   <link rel="stylesheet" href="/src/style.css" />
   <title>HOME</title>
 </head>
 <body>
   <div class="HOME">
-    <img class="LOGO" src="/src/img/logo-2-1.svg.svg" />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 text-center py-3">
+          <img class="LOGO img-fluid" src="/src/img/logo-2-1.svg.svg" alt="Logo" style="max-height: 80px;" />
+        </div>
+      </div>
+    </div>
 
-    <input type="checkbox" id="menu-toggle" class="hidden-checkbox">
-
-    <label for="menu-toggle" class="hamburger-menu" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
-
-    <nav class="NAVBAR">
-        <a href="index.html">HOMER</a>
-        <a href="../fotograf/galery.html">GALÉRIA</a>
-        <a href="./o-nas.html">O MNE</a>
-        <a href="../contact.html">KONTAKT</a>
-        <a href="https://www.instagram.com/" target="_blank">INSTAGRAM</a>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link active" href="index.html">HOME</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="galery.html">GALÉRIA</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="o-nas.html">O MNE</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="contact.html">KONTAKT</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="https://www.instagram.com/" target="_blank">INSTAGRAM</a>
+            </li>
+          </ul>
+        </div>
+      </div>
     </nav>
      
-    <div class="GRID">
-      <img class="rectangle" src="/src/img/DSC_0425.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0482.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0566.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_7249.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_7103.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0496.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5478.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5916.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_8428.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5004.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_7998.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_8435.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5537.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0884.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5469.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0961.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0575.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0731.jpeg" />
-      <img class="rectangle" src="/src/img/rectangle-38.png" />
-      <img class="rectangle" src="/src/img/rectangle-35.png" />
-      <img class="rectangle" src="/src/img/rectangle-1.png" />
-      <img class="rectangle" src="/src/img/rectangle-27.png" />
-      <img class="rectangle" src="/src/img/rectangle-39.png" />
-      <img class="rectangle" src="/src/img/DSC_7249.jpeg" />
+    <div class="container-fluid mt-4">
+      <div class="row g-3">
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_0425.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_0482.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_0566.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_7249.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_7103.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_0496.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_5478.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_5916.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_8428.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_5004.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_7998.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_8435.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_5537.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_0884.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_5469.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_0961.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_0575.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_0731.jpeg" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/rectangle-38.png" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/rectangle-35.png" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/rectangle-1.png" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/rectangle-27.png" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/rectangle-39.png" alt="Photo" />
+        </div>
+        <div class="col-6 col-md-4 col-lg-3">
+          <img class="img-fluid w-100" src="/src/img/DSC_7249.jpeg" alt="Photo" />
+        </div>
+      </div>
     </div>
 
   </div>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
