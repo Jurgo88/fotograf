@@ -1,61 +1,77 @@
 <!DOCTYPE html>
 <html lang="sk">
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta charset="utf-8" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fotograf</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="/src/style.css" />
-  <title>HOME</title>
+<!-- Bootstrap CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+
+<!-- Lightbox CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css" />
+
+
+<link rel="stylesheet" href="/style.css" />
 </head>
+
+
 <body>
-  <div class="HOME">
-    <img class="LOGO" src="/src/img/logo-2-1.svg.svg" />
+<!-- NAVBAR (mobile) -->
+<nav class="navbar navbar-light bg-light d-lg-none px-3">
+<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas">
+<span class="navbar-toggler-icon"></span>
+</button>
+</nav>
 
-    <input type="checkbox" id="menu-toggle" class="hidden-checkbox">
 
-    <label for="menu-toggle" class="hamburger-menu" aria-label="Menu">
-        <span></span>
-        <span></span>
-        <span></span>
-    </label>
+<!-- SIDEBAR -->
+<div class="offcanvas-lg offcanvas-start bg-light sidebar" id="menuOffcanvas">
+<div class="offcanvas-header d-lg-none">
+<h5 class="offcanvas-title">Menu</h5>
+<button class="btn-close" data-bs-dismiss="offcanvas"></button>
+</div>
 
-    <nav class="NAVBAR">
-        <a href="index.html">HOMER</a>
-        <a href="../fotograf/galery.html">GALÉRIA</a>
-        <a href="./o-nas.html">O MNE</a>
-        <a href="../contact.html">KONTAKT</a>
-        <a href="https://www.instagram.com/" target="_blank">INSTAGRAM</a>
-    </nav>
-     
-    <div class="GRID">
-      <img class="rectangle" src="/src/img/DSC_0425.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0482.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0566.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_7249.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_7103.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0496.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5478.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5916.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_8428.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5004.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_7998.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_8435.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5537.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0884.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_5469.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0961.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0575.jpeg" />
-      <img class="rectangle" src="/src/img/DSC_0731.jpeg" />
-      <img class="rectangle" src="/src/img/rectangle-38.png" />
-      <img class="rectangle" src="/src/img/rectangle-35.png" />
-      <img class="rectangle" src="/src/img/rectangle-1.png" />
-      <img class="rectangle" src="/src/img/rectangle-27.png" />
-      <img class="rectangle" src="/src/img/rectangle-39.png" />
-      <img class="rectangle" src="/src/img/DSC_7249.jpeg" />
-    </div>
 
-  </div>
+<div class="offcanvas-body d-flex flex-column justify-content-between">
+<ul class="nav flex-column">
+<li class="nav-item"><a class="nav-link" href="#col1">Galéria 1</a></li>
+<li class="nav-item"><a class="nav-link" href="#col2">Galéria 2</a></li>
+<li class="nav-item"><a class="nav-link" href="#col3">Galéria 3</a></li>
+<li class="nav-item"><a class="nav-link" href="#kontakt">Kontakt</a></li>
+</ul>
+
+
+<!-- Masonry toggle -->
+<div class="mt-4">
+<label class="form-check-label fw-bold">Masonry Layout</label>
+<br>
+<input type="checkbox" id="toggleMasonry" /> Zapnúť
+</div>
+</div>
+</div>
+
+
+<!-- MAIN CONTENT -->
+<div class="content">
+<div id="photosContainer" class="photos d-flex flex-column flex-lg-row"></div>
+</div>
+
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+
+<!-- Lightbox JS -->
+<script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+
+
+<!-- GSAP -->
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+
+
+<script type="module" src="/src/main.js"></script>
 </body>
 </html>

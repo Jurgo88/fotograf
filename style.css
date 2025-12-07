@@ -1,0 +1,100 @@
+html, body {
+height: 100%;
+margin: 0;
+overflow: hidden;
+}
+
+
+.sidebar {
+width: 33%;
+border-right: 1px solid #ddd;
+}
+
+
+@media (min-width: 992px) {
+.sidebar {
+position: fixed;
+top: 0;
+bottom: 0;
+left: 0;
+padding: 1rem;
+}
+}
+
+
+.content {
+height: 100%;
+overflow: hidden;
+margin-top: 150px;
+}
+
+
+@media (min-width: 992px) {
+.content {
+margin-left: 33%;
+}
+}
+
+
+.photos {
+height: 100%;
+overflow-y: auto;
+padding: 1rem;
+gap: 1rem;
+}
+
+
+.photo-column {
+flex: 1;
+}
+
+
+.photo-column img {
+width: 100%;
+display: block;
+margin-bottom: 1rem;
+border-radius: 6px;
+object-fit: cover;
+}
+
+
+/* Masonry ON */
+/* CSS columns masonry */
+/* príklad */
+/* Grid layout */
+#photosContainer.grid {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#photosContainer.grid .photo-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#photosContainer.grid img {
+  width: 100%;
+  display: block;
+}
+
+/* Masonry layout */
+#photosContainer.masonry {
+  display: block;  /* odstráni flex */
+}
+
+.grid-item {
+  width: 33.33%;   /* pevne 3 stĺpce */
+    box-sizing: border-box;
+
+  margin-bottom: 10px;
+  float: left;
+}
+
+.grid-item img {
+  width: 100%;
+  display: block;
+}

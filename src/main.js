@@ -1,24 +1,63 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+import './style.css';
+import Masonry from 'masonry-layout';  // cez npm
+import { loadImages } from './js/loadImages.js';
+import { renderGridLayout } from './js/layoutGrid.js';
+import { renderMasonryLayout } from './js/layoutMasonry.js';
+import { initLightbox } from './js/lightbox.js';
+import { runAnimations } from './js/animations.js';
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+const images = loadImages();
+let glightbox = null;
+let msnry = null;
 
-setupCounter(document.querySelector('#counter'))
+
+function renderGrid(container) {
+  renderGridLayout(container, images);
+
+  // Lightbox + animácie
+  glightbox = initLightbox();
+  runAnimations();
+
+  // Ak Masonry bola predtým inicializovaná, destroy
+  if (msnry) {
+    msnry.destroy();
+    msnry = null;
+  }
+}
+
+function renderMasonry(container) {
+  renderMasonryLayout(container, images);
+
+  // Inicializujeme Masonry
+msnry = new Masonry(container, {
+  itemSelector: '.grid-item',
+  gutter: 10
+});
+
+  // Lightbox + animácie
+  glightbox = initLightbox();
+  runAnimations();
+
+  // Po loadovaní obrázkov prerender
+  window.addEventListener('load', () => {
+    msnry.layout();
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.getElementById('photosContainer');
+  const masonryToggle = document.getElementById('toggleMasonry');
+
+  if (!container || !masonryToggle) {
+    console.error('DOM elements not found!');
+    return;
+  }
+
+  // default grid
+  renderGrid(container);
+
+  // toggle masonry/grid
+  masonryToggle.addEventListener('change', () => {
+    masonryToggle.checked ? renderMasonry(container) : renderGrid(container);
+  });
+});
