@@ -1,5 +1,7 @@
 import './style.css';
+import './css/about.css'
 import Masonry from 'masonry-layout';  // cez npm
+import { prepinac } from './js/prepinac.js';
 import { loadImages } from './js/loadImages.js';
 import { renderGridLayout } from './js/layoutGrid.js';
 import { renderMasonryLayout } from './js/layoutMasonry.js';
@@ -46,18 +48,32 @@ msnry = new Masonry(container, {
 
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.getElementById('photosContainer');
-  const masonryToggle = document.getElementById('toggleMasonry');
+  // const masonryToggle = document.getElementById('toggleMasonry');
 
-  if (!container || !masonryToggle) {
-    console.error('DOM elements not found!');
-    return;
-  }
+  // if (!container || !masonryToggle) {
+  //   console.error('DOM elements not found!');
+  //   return;
+  // }
 
   // default grid
   renderGrid(container);
 
-  // toggle masonry/grid
-  masonryToggle.addEventListener('change', () => {
-    masonryToggle.checked ? renderMasonry(container) : renderGrid(container);
+  // init menu switching
+  prepinac();
+
+  //if 5 times cliks on class logo render masonry
+  const logo = document.querySelector('.LOGO');
+  let clickCount = 0;
+
+  logo.addEventListener('click', () => {
+    clickCount++;
+    if (clickCount === 5) {
+      renderMasonry(container);
+    }
   });
+
+  // toggle masonry/grid
+  // masonryToggle.addEventListener('change', () => {
+  //   masonryToggle.checked ? renderMasonry(container) : renderGrid(container);
+  // });
 });

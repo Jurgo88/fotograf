@@ -160,7 +160,9 @@ body {
 }
 
 .self-photo  {
-    margin-left: 50%;
+    /* margin-left: 50%; */
+    text-align: center;
+
 }
 
 .CONTACT .text-contact {

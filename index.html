@@ -19,8 +19,11 @@
 
 
 <body>
+
+
+  
 <!-- NAVBAR (mobile) -->
-<nav class="navbar navbar-light bg-light d-lg-none px-3">
+<nav class="navbar navbar-light  d-lg-none px-3">
 <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menuOffcanvas">
 <span class="navbar-toggler-icon"></span>
 </button>
@@ -28,36 +31,140 @@
 
 
 <!-- SIDEBAR -->
-<div class="offcanvas-lg offcanvas-start bg-light sidebar" id="menuOffcanvas">
+<div class="offcanvas-lg offcanvas-start sidebar" id="menuOffcanvas">
 <div class="offcanvas-header d-lg-none">
 <h5 class="offcanvas-title">Menu</h5>
 <button class="btn-close" data-bs-dismiss="offcanvas"></button>
 </div>
 
+    <img class="LOGO" src="/src/img/logo-2-1.svg.svg" />
+
+    <input type="checkbox" id="menu-toggle" class="hidden-checkbox">
+
+    <label for="menu-toggle" class="hamburger-menu" aria-label="Menu">
+        <span></span>
+        <span></span>
+        <span></span>
+    </label>
+
 
 <div class="offcanvas-body d-flex flex-column justify-content-between">
-<ul class="nav flex-column">
-<li class="nav-item"><a class="nav-link" href="#col1">Galéria 1</a></li>
-<li class="nav-item"><a class="nav-link" href="#col2">Galéria 2</a></li>
-<li class="nav-item"><a class="nav-link" href="#col3">Galéria 3</a></li>
-<li class="nav-item"><a class="nav-link" href="#kontakt">Kontakt</a></li>
-</ul>
+    <nav class="navbar">
+<a href="index.html">HOME</a>
+    <a href="../fotograf/galery.html">GALÉRIA</a>
+    
+    <a href="#about-section">O MNE</a>
+    <a href="#contact-section">KONTAKT</a> 
+    
+    <a href="https://www.instagram.com/" target="_blank">INSTAGRAM</a>
+    </nav>
 
 
 <!-- Masonry toggle -->
-<div class="mt-4">
+<!-- <div class="mt-4">
 <label class="form-check-label fw-bold">Masonry Layout</label>
 <br>
 <input type="checkbox" id="toggleMasonry" /> Zapnúť
-</div>
+</div> -->
+
+
 </div>
 </div>
 
 
 <!-- MAIN CONTENT -->
 <div class="content">
-<div id="photosContainer" class="photos d-flex flex-column flex-lg-row"></div>
-</div>
+  <section id="gallery-section" class="content-section active ">
+    <div id="photosContainer" class="content-section active photos d-flex flex-column flex-lg-row"></div>
+  </section>
+
+<section id="about-section" class="content-section ">
+                <div class="about">
+                <p class="text-about">
+                    Ahojte, volám sa Peter Zigo a som fotograf.
+                    Verím, že svadobný deň má byť radostný, nie len fotogenický a že svadba nemá byť len
+                    zoznam úloh, ktoré sa odškrtávajú, ale skutočný zážitok. Od tichého napätia pred
+                    obradom až po radosť na parkete... som tu, aby som zachytil každý okamih, aby ste sa k
+                    nemu mohli kedykoľvek vrátiť.
+                    Váš svadobný príbeh sa nezačína až na ceste k oltáru. Patrí doň aj smiech pri
+                    prípravách, objatia priateľov, ktorí prišli zďaleka, aj tichá nervozita pred obradom.</p>
+
+                <p class="text-about">Mám pokojný a priateľský prístup a vždy sa snažím vycítiť, čo daný moment
+                    potrebuje.
+                    Sú chvíle, keď nechávam fotenie plynúť úplne prirodzene a všetko ide samo od seba.
+                    Zároveň viem, že mnohí ľudia nemajú veľa skúseností pred objektívom alebo sa fotenia
+                    dokonca trochu obávajú.
+                    Ak patríte k tejto skupine, verte mi, nie ste v tom sami. Mojou úlohou ako fotografa je
+                    kryť vám chrbát – jemne vás naviesť a usmerniť, nenútene, s citom a tak, aby ste sa
+                    cítili pohodlne a sami sebou.
+                    Mojím cieľom je, aby ste si fotenie naozaj užili a aby výsledné fotografie pôsobili
+                    autenticky, uvoľnene a prirodzene.</p>
+                </p>
+
+            </div>
+
+            <div class="self-photo"><img src="src/img/DSC_6426_S.jpeg" alt="self-photo"></div>
+
+</section>
+
+<section id="contact-section" class="content-section ">
+    <h2>Kontaktujte ma</h2>
+    <form class="form" name="contact" method="POST" netlify>
+
+    <input type="hidden" name="form-name" value="contact" />
+
+    <div class="row">
+        <div class="field">
+            <label for="name">Meno:*</label>
+            <input type="text" id="name" name="name" required />
+        </div>
+
+        <div class="field">
+            <label for="lastName">Priezvisko:*</label>
+            <input type="text" id="lastName" name="lastName" required />
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="field">
+            <label for="partnerName">Meno partnera / partnerky:</label>
+            <input type="text" id="partnerName" name="partnerName" />
+        </div>
+
+        <div class="field">
+            <label for="partnerLastName">Priezvisko partnera / partnerky:</label>
+            <input type="text" id="partnerLastName" name="partnerLastName" />
+        </div>
+    </div>
+
+    <div class="field">
+        <label for="email">Email:*</label>
+        <input type="email" id="email" name="email" required />
+    </div>
+
+    <div class="field">
+        <label for="date">Dátum:*</label>
+        <input type="date" id="date" name="date" required />
+    </div>
+
+    <div class="field">
+        <label for="location">Miesto / Lokalita:*</label>
+        <input type="text" id="location" name="location" required />
+    </div>
+
+    <div class="field">
+        <label for="message">Správa:*</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+    </div>
+
+    <div class="field">
+        <button type="submit">Odoslať správu</button>
+    </div>
+
+</form>
+</section>
+
+
 
 
 <!-- Bootstrap JS -->
