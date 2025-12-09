@@ -19,6 +19,7 @@
   src: url("/src/fonts/QUICHE%20DISPLAY%20REGULAR.woff") format("woff");
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 
