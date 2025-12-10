@@ -25,6 +25,7 @@
 
 :root {
   --mobile-topbar-height: 70px;
+  --padding-top-bar: 6rem;
 }
 
 /* ----------------------------------------------
@@ -40,6 +41,12 @@ html, body {
   /* height: 100%; */
   margin: 0;
   font-family: "MyFont", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+}
+
+section {
+  padding: 2rem;
+  /* max-width: 80%; */
+  margin: 0 auto;
 }
 
 /* Utilities */
@@ -58,13 +65,14 @@ html, body {
   flex-direction: column;
   align-items: center;       /* LOGO aj menu sa zarovnajú na stred */
   width: 100%;
-  padding-top: 2rem;
+  padding-top: var(--padding-top-bar);
 }
 
 /* Logo */
 .LOGO {
   width: 65%;                /* krásny pomer, môžeš zmeniť */
   margin-bottom: 2rem;
+  top: 0;
 }
 
 /* Navbar under logo */
@@ -141,6 +149,7 @@ html, body {
   }
 }
 
+
 /* Logo */
 .LOGO {
   max-width: 600px;
@@ -182,8 +191,11 @@ html, body {
 /* Main content */
 .content {
   height: 100%;
-  padding-top: 150px;
+  padding-top: var(--padding-top-bar);
+  margin-top: 3rem;
 }
+
+
 
 @media (min-width: 992px) {
   .content {
@@ -233,16 +245,20 @@ html, body {
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 1px;
+  left: 3rem;
+    position: absolute;
 }
 
 /* Zmenšime defaultnú Btn ikonku */
 .mobile-topbar .navbar-toggler {
   border: none;
+  right: 2rem;
+    position: absolute;
 }
 
 /* Ikona hamburger */
 .mobile-topbar .navbar-toggler-icon {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 30px;
   height: 30px;
 }

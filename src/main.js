@@ -77,3 +77,21 @@ document.addEventListener('DOMContentLoaded', () => {
   //   masonryToggle.checked ? renderMasonry(container) : renderGrid(container);
   // });
 });
+
+document.querySelectorAll('.sidebar nav a').forEach(link => {
+  link.addEventListener('click', () => {
+    const offcanvasEl = document.getElementById('menuOffcanvas');
+    const bsOffcanvas = bootstrap.Offcanvas.getInstance(offcanvasEl);
+    if (bsOffcanvas) bsOffcanvas.hide();
+  });
+});
+
+// on click btn-close hide offcanvas
+document.querySelectorAll('.btn-close').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const offcanvasEl = document.getElementById('menuOffcanvas');
+    const bsOffcanvas = bootstrap.Offcanvas.getOrCreateInstance(offcanvasEl);
+    bsOffcanvas.hide();
+  });
+});
+
