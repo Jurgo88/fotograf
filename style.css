@@ -48,6 +48,12 @@ section {
   /* max-width: 80%; */
   margin: 0 auto;
 }
+@media screen and (max-width: 991px) {
+  section {
+    padding: 0.5rem;
+  }
+  
+}
 
 /* Utilities */
 .hidden { display: none; }
@@ -245,8 +251,8 @@ section {
   font-size: 22px;
   font-weight: 600;
   letter-spacing: 1px;
-  left: 3rem;
-    position: absolute;
+  left: 0.5rem;
+  position: absolute;
 }
 
 /* Zmenšime defaultnú Btn ikonku */
@@ -282,6 +288,12 @@ section {
   gap: 1rem;
   display: flex;
 }
+@media screen and (max-width: 991px) {
+  .photos {
+    padding: 0;
+  }
+  
+}
 
 .photo-column {
   flex: 1;
@@ -296,13 +308,27 @@ section {
   border-radius: 6px;
   object-fit: cover;
 }
+@media screen and (max-width: 991px) {
+  .photo-column img,
+  .photos img,
+  .grid-item img {
+    margin-bottom: 0.2rem;
+  }
+  
+}
 
 /* Grid layout */
 #photosContainer.grid {
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: 10px;
+  gap: 1rem;
+}
+@media screen and (max-width: 991px) {
+  #photosContainer.grid {
+    gap: 0.2rem;
+  }
+  
 }
 
 #photosContainer.grid .photo-column {

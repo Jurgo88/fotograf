@@ -10,7 +10,7 @@ export function renderGridLayout(container, images) {
     container.appendChild(col);
   });
 
-  // Rozdelíme obrázky cyklicky
+  // Vytvoríme obrázky a pridáme ich do stĺpcov
   images.forEach((url, idx) => {
     const img = document.createElement('img');
     img.src = url;

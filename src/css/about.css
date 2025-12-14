@@ -17,10 +17,32 @@ margin-left: 33%;
 .text-about{
     padding: 1%;
     text-align: center;
-    font-size: 20px;
+    font-size: 1rem;
     line-height: 1.55;
     /* font-family: "Playfair Display", serif; */
-    letter-spacing: 0.px;
+    letter-spacing: 0px;
     word-spacing: 10px;
     /* color: #222; */
+}
+
+@media screen and  (max-width: 991px) {
+  #about {
+    padding: 1rem;
+  }
+
+  
+  #about h2 {
+    font-size: 1.5rem;
+  }
+
+  #about p {
+    font-size: 1rem;
+  }
+
+  .text-about {
+    font-size: 0.9rem;
+    word-spacing: 2px;
+    line-height: 1.25;
+
+  }
 }
