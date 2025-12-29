@@ -9,6 +9,7 @@ import { runAnimations } from './js/animations.js';
 
 const container = document.getElementById('photosContainer');
 const masonryToggle = document.getElementById('masonryToggle');
+const galleryContainer = document.getElementById('galleryContainer');
 
 
 const images = loadImages();
@@ -22,6 +23,21 @@ glightbox = initLightbox();
 runAnimations();
 }
 
+function clearContainer() {
+container.innerHTML = '';
+if (glightbox) {
+glightbox.destroy();
+glightbox = null;
+}
+}
+
+function renderGallery() {
+clearContainer();
+renderGridLayout(galleryContainer, images);
+glightbox = initLightbox();
+runAnimations();
+}
+
 
 function renderMasonry() {
 renderMasonryLayout(container, images);
@@ -31,6 +47,14 @@ runAnimations();
 
 
 renderGrid();
+
+//get gallery nav link href="#gallery-section"
+const galleryLink = document.getElementById('galleryLink');
+galleryLink.addEventListener('click', (e) => {
+e.preventDefault();
+console.log('Gallery link clicked');
+renderGallery();
+});
 
 
 masonryToggle.addEventListener('change', () => {
