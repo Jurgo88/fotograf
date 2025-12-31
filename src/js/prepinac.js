@@ -4,7 +4,7 @@
  * majú 'href' začínajúci znakom '#' (napr. '#about-section').
  */
 export function prepinac() {
-    console.log('Prepinac initialized');
+    // console.log('Prepinac initialized');
     // 1. Získame všetky navigačné odkazy, ktoré by mali prepínať obsah (kotvy)
     const navLinks = document.querySelectorAll('.navbar a[href^="#"]');
     
@@ -23,10 +23,10 @@ export function prepinac() {
      * @param {string} targetId - ID sekcie (bez '#').
      */
     function switchSection(targetId) {
-        console.log(`Switching to section: ${targetId}`);
+        // console.log(`Switching to section: ${targetId}`);
         // A. Skry všetky sekcie
         contentSections.forEach(section => {
-            console.log(`Hiding section: ${section.id}`);
+            // console.log(`Hiding section: ${section.id}`);
             section.classList.add('hidden');
             section.classList.remove('active');
         });
@@ -45,7 +45,7 @@ export function prepinac() {
 
             // Overíme, či ide o lokálnu kotvu
             if (targetHash && targetHash.startsWith('#')) {
-                console.log(`Navigating to section: ${targetHash}`);
+                // console.log(`Navigating to section: ${targetHash}`);
                 // Zastavíme predvolené správanie (scroll)
                 event.preventDefault(); 
                 

@@ -8,9 +8,12 @@ import { renderMasonryLayout } from './js/layoutMasonry.js';
 import { initLightbox } from './js/lightbox.js';
 import { runAnimations } from './js/animations.js';
 
-const images = loadImages();
+const images = loadImages('home');
+const imagesGallery = loadImages('gallery');
 let glightbox = null;
 let msnry = null;
+const galleryContainer = document.getElementById('galleryContainer');
+const container = document.getElementById('photosContainer');
 
 
 function renderGrid(container) {
@@ -25,6 +28,21 @@ function renderGrid(container) {
     msnry.destroy();
     msnry = null;
   }
+}
+
+function clearContainer() {
+  container.innerHTML = '';
+  if (glightbox) {
+    glightbox.destroy();
+    glightbox = null;
+  }
+}
+
+function renderGallery() {
+  clearContainer();
+  renderGridLayout(galleryContainer, imagesGallery);
+  glightbox = initLightbox();
+  runAnimations();
 }
 
 function renderMasonry(container) {
@@ -58,6 +76,18 @@ document.addEventListener('DOMContentLoaded', () => {
   // default grid
   renderGrid(container);
 
+  //render gallery on click gallery nav link
+  const galleryLink = document.getElementById('galleryLink');
+  if (galleryLink) {
+    galleryLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      //     console.log    ('Gallery link clicked');
+      renderGallery();
+    });
+  } else {
+    console.error('Element with ID "galleryLink" not found!');
+  }
+
   // init menu switching
   prepinac();
 
@@ -68,7 +98,9 @@ document.addEventListener('DOMContentLoaded', () => {
   logo.addEventListener('click', () => {
     clickCount++;
     if (clickCount === 5) {
-      renderMasonry(container);
+      // renderMasonry(container);
+      alert('Neklikaj toľko a objednaj si fotenie! 😊');
+      // renderMasonry(container);
     }
   });
 
