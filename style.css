@@ -440,7 +440,7 @@ input, textarea {
 }
 
 .self-photo img {
-  max-width: 80%;
+  max-width: 70%;
   height: auto;
 }
 
@@ -472,4 +472,14 @@ input, textarea {
   .row {
     flex-direction: column;
   }
+}
+
+
+.text-quote {
+  font-size: 1.4rem;      /* väčšie písmo */
+  font-style: italic;    /* kurzíva */
+  line-height: 1.5;
+  margin: 32px;
+  color: #444;
+  text-align: center;
 }
