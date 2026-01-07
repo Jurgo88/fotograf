@@ -392,6 +392,37 @@ footer p {
   clear: both;
 }
 
+.show-more-container {
+  text-align: center;
+  margin-top: 1rem;  
+  /* position: relative; */
+}
+
+.show-more-btn {
+  opacity: 0.5;
+  /* background-color: #6c28c5; */
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 10px 20px;
+  font-size: 2rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  top: -100px;
+  position: relative;
+  box-shadow: 0px 10px 6px rgba(0,0,0,0.2);
+  font-weight: 900;
+  display: none; /* Initially hidden */
+}
+.show-more-btn:hover {
+  background-color: #000000;
+  color: white;
+  opacity: 1;
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.2);
+  transition: all 0.5s ease;
+  font-weight: 100; /* Updated font-weight */
+}
+
 
 /* ----------------------------------------------
    5) Forms

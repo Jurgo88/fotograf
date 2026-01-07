@@ -18,6 +18,10 @@ const container = document.getElementById('photosContainer');
 
 function renderGrid(container) {
   renderGridLayout(container, images);
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  if (showMoreBtn) {
+    showMoreBtn.style.display = 'inline';
+  }
 
   // Lightbox + animácie
   glightbox = initLightbox();
@@ -41,6 +45,10 @@ function clearContainer() {
 function renderGallery() {
   clearContainer();
   renderGridLayout(galleryContainer, imagesGallery);
+  const showMoreBtn = document.getElementById('showMoreBtn');
+  if (showMoreBtn) {
+    showMoreBtn.style.display = 'none';
+  }
   glightbox = initLightbox();
   runAnimations();
 }
@@ -76,17 +84,27 @@ document.addEventListener('DOMContentLoaded', () => {
   // default grid
   renderGrid(container);
 
-  //render gallery on click gallery nav link
-  const galleryLink = document.getElementById('galleryLink');
-  if (galleryLink) {
-    galleryLink.addEventListener('click', (e) => {
+  //render gallery on click gallery nav link and also if click on button with id showMoreBtn
+  // render gallery on click gallery nav link and also if click on button with id showMoreBtn
+  function bindGalleryTrigger(id) {
+    const el = document.getElementById(id);
+    if (!el) {
+      console.warn(`Element with ID "${id}" not found.`);
+      return;
+    }
+    el.addEventListener('click', (e) => {
       e.preventDefault();
-      //     console.log    ('Gallery link clicked');
+      //hide button showMoreBtn if exists
+      const showMoreBtn = document.getElementById('showMoreBtn');
+      if (showMoreBtn) {
+        showMoreBtn.style.display = 'inline';
+      }
       renderGallery();
     });
-  } else {
-    console.error('Element with ID "galleryLink" not found!');
   }
+
+  bindGalleryTrigger('showMoreBtn');
+  bindGalleryTrigger('galleryLink');
 
   // init menu switching
   prepinac();
