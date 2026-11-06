@@ -12,45 +12,44 @@ const images = loadImages('home');
 const imagesGallery = loadImages('gallery');
 let glightbox = null;
 let msnry = null;
+let galleryMode = null; // 'home' = výber na úvode, 'full' = celá galéria
 const galleryContainer = document.getElementById('galleryContainer');
 const container = document.getElementById('photosContainer');
+const showMoreBtn = document.getElementById('showMoreBtn');
 
-
-function renderGrid(container) {
-  renderGridLayout(container, images);
-  const showMoreBtn = document.getElementById('showMoreBtn');
-  if (showMoreBtn) {
-    showMoreBtn.style.display = 'inline';
-  }
-
-  // Lightbox + animácie
+function refreshLightbox() {
+  if (glightbox) glightbox.destroy();
   glightbox = initLightbox();
-  runAnimations();
+}
 
-  // Ak Masonry bola predtým inicializovaná, destroy
+// úvod: výber fotiek zo src/img/home + tlačidlo "Zobraziť viac"
+function showHome() {
+  if (galleryMode === 'home') return;
+  galleryMode = 'home';
+
   if (msnry) {
     msnry.destroy();
     msnry = null;
   }
+  galleryContainer.innerHTML = '';
+  renderGridLayout(container, images);
+  if (showMoreBtn) showMoreBtn.style.display = 'inline';
+
+  refreshLightbox();
+  runAnimations(container);
 }
 
-function clearContainer() {
+// #galeria: všetky fotky zo src/img/gallery
+function showFullGallery() {
+  if (galleryMode === 'full') return;
+  galleryMode = 'full';
+
   container.innerHTML = '';
-  if (glightbox) {
-    glightbox.destroy();
-    glightbox = null;
-  }
-}
-
-function renderGallery() {
-  clearContainer();
   renderGridLayout(galleryContainer, imagesGallery);
-  const showMoreBtn = document.getElementById('showMoreBtn');
-  if (showMoreBtn) {
-    showMoreBtn.style.display = 'none';
-  }
-  glightbox = initLightbox();
-  runAnimations();
+  if (showMoreBtn) showMoreBtn.style.display = 'none';
+
+  refreshLightbox();
+  runAnimations(galleryContainer);
 }
 
 function renderMasonry(container) {
@@ -63,8 +62,8 @@ msnry = new Masonry(container, {
 });
 
   // Lightbox + animácie
-  glightbox = initLightbox();
-  runAnimations();
+  refreshLightbox();
+  runAnimations(container);
 
   // Po loadovaní obrázkov prerender
   window.addEventListener('load', () => {
@@ -81,33 +80,16 @@ document.addEventListener('DOMContentLoaded', () => {
   //   return;
   // }
 
-  // default grid
-  renderGrid(container);
+  // prepínanie sekcií podľa adresy (#galeria, #o-mne, #kontakt).
+  // Galéria sa vykreslí až keď je potrebná – kto otvorí priamo #kontakt, nesťahuje fotky.
+  const router = prepinac((route) => {
+    if (route === '') showHome();
+    if (route === 'galeria') showFullGallery();
+  });
 
-  //render gallery on click gallery nav link and also if click on button with id showMoreBtn
-  // render gallery on click gallery nav link and also if click on button with id showMoreBtn
-  function bindGalleryTrigger(id) {
-    const el = document.getElementById(id);
-    if (!el) {
-      console.warn(`Element with ID "${id}" not found.`);
-      return;
-    }
-    el.addEventListener('click', (e) => {
-      e.preventDefault();
-      //hide button showMoreBtn if exists
-      const showMoreBtn = document.getElementById('showMoreBtn');
-      if (showMoreBtn) {
-        showMoreBtn.style.display = 'inline';
-      }
-      renderGallery();
-    });
+  if (showMoreBtn) {
+    showMoreBtn.addEventListener('click', () => router.navigate('galeria'));
   }
-
-  bindGalleryTrigger('showMoreBtn');
-  bindGalleryTrigger('galleryLink');
-
-  // init menu switching
-  prepinac();
 
   //if 5 times cliks on class logo render masonry
   const logo = document.querySelector('.LOGO');

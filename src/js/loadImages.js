@@ -1,15 +1,19 @@
 // src/js/loadImages.js
-export function loadImages(value) {
-    // Import all images from the 'src/img' directory
-    const modules = import.meta.glob('/src/img/**/*.{jpg,jpeg,png,webp}', {
-        eager: true,
-        as: 'url'
-    });
+// Načíta fotky z priečinkov src/img/home a src/img/gallery.
+// Každá fotka je objekt { url, width, height } (rozmery dopĺňa plugin vo vite.config.js).
+// Do buildu sa dostanú len tieto dva priečinky, nie ostatné obrázky zo src/img.
+const modules = import.meta.glob(
+  [
+    '/src/img/home/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+    '/src/img/gallery/**/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}',
+  ],
+  { eager: true, query: '?size', import: 'default' }
+);
 
-    // Filter images based on the provided value (subdirectory)
-    const filteredImages = Object.keys(modules)
-        .filter((path) => value ? path.includes(`/src/img/${value}/`) : true)
-        .map((path) => modules[path]);
-
-    return filteredImages;
+/** @param {'home' | 'gallery'} folder */
+export function loadImages(folder) {
+  return Object.keys(modules)
+    .filter((path) => path.startsWith(`/src/img/${folder}/`))
+    .sort()
+    .map((path) => modules[path]);
 }

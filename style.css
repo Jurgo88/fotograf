@@ -336,6 +336,7 @@ footer p {
 .photos img,
 .grid-item img {
   width: 100%;
+  height: auto;
   display: block;
   margin-bottom: 1rem;
   border-radius: 6px;

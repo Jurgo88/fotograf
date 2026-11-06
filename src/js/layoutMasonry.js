@@ -6,12 +6,15 @@ export function renderMasonryLayout(container, images) {
 container.classList.add('masonry');
 
 
-  images.forEach((url) => {
+  images.forEach((image) => {
     const item = document.createElement('div');
     item.classList.add('grid-item');
 
     const img = document.createElement('img');
-    img.src = url;
+    img.src = image.url;
+    img.width = image.width;
+    img.height = image.height;
+    img.loading = 'lazy';
     img.classList.add('glightbox');
     item.appendChild(img);
 

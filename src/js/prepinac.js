@@ -1,63 +1,81 @@
 /**
- * Inicializuje logiku prepínania obsahu (sekcií) na základe kliknutia v navigačnom menu.
- * Predpokladá, že sekcie majú triedu '.content-section' a odkazy v menu 
- * majú 'href' začínajúci znakom '#' (napr. '#about-section').
+ * Prepínanie sekcií s vlastnou adresou pre každú sekciu (napr. .../#kontakt).
+ * - odkaz v menu s atribútom data-route prepne sekciu a zmení adresu
+ * - funguje tlačidlo Späť/Dopredu v prehliadači
+ * - po obnovení stránky alebo otvorení odkazu sa zobrazí správna sekcia
  */
-export function prepinac() {
-    // console.log('Prepinac initialized');
-    // 1. Získame všetky navigačné odkazy, ktoré by mali prepínať obsah (kotvy)
-    const navLinks = document.querySelectorAll('.navbar a[href^="#"]');
-    
-    // 2. Získame všetky sekcie obsahu
+
+// route (časť adresy za #) -> id sekcie
+const ROUTES = {
+    '': 'gallery-section',          // úvod
+    'galeria': 'gallery-section',   // celá galéria
+    'o-mne': 'about-section',
+    'kontakt': 'contact-section',
+    'extra': 'extra-section',
+};
+
+function currentRoute() {
+    return decodeURIComponent(window.location.hash.slice(1));
+}
+
+/**
+ * @param {(route: string) => void} [onRouteChange] - zavolá sa po každom prepnutí sekcie
+ * @returns {{ navigate: (route: string) => void }}
+ */
+export function prepinac(onRouteChange) {
+    const navLinks = document.querySelectorAll('.navbar a[data-route]');
     const contentSections = document.querySelectorAll('.content-section');
 
-    // schovame vsetky sekcie okrem galerie
-    contentSections.forEach(section => {
-        if (!section.classList.contains('active')) {
-            section.classList.add('hidden');
+    function show(route) {
+        // podpora starých odkazov typu #about-section
+        if (!(route in ROUTES)) {
+            const legacy = Object.keys(ROUTES).find((key) => ROUTES[key] === route);
+            route = legacy ?? '';
         }
-    });
+        const targetId = ROUTES[route];
 
-    /**
-     * Skryje všetky sekcie a zobrazí len cieľovú sekciu.
-     * @param {string} targetId - ID sekcie (bez '#').
-     */
-    function switchSection(targetId) {
-        // console.log(`Switching to section: ${targetId}`);
-        // A. Skry všetky sekcie
-        contentSections.forEach(section => {
-            // console.log(`Hiding section: ${section.id}`);
-            section.classList.add('hidden');
-            section.classList.remove('active');
+        contentSections.forEach((section) => {
+            const isTarget = section.id === targetId;
+            section.classList.toggle('hidden', !isTarget);
+            section.classList.toggle('active', isTarget);
         });
 
-        // B. Ukáž len cieľovú sekciu
-        const targetSection = document.getElementById(targetId);
-        if (targetSection) {
-            targetSection.classList.remove('hidden');
-            targetSection.classList.add('active');
-        }
-    }
-
-    navLinks.forEach(link => {
-        link.addEventListener('click', (event) => {
-            const targetHash = link.getAttribute('href');
-
-            // Overíme, či ide o lokálnu kotvu
-            if (targetHash && targetHash.startsWith('#')) {
-                // console.log(`Navigating to section: ${targetHash}`);
-                // Zastavíme predvolené správanie (scroll)
-                event.preventDefault(); 
-                
-                // Získame ID sekcie (odstránime #)
-                const targetId = targetHash.substring(1); 
-                
-                // Spustíme prepínanie
-                switchSection(targetId);
+        navLinks.forEach((link) => {
+            const isActive = link.dataset.route === route;
+            link.classList.toggle('active', isActive);
+            if (isActive) {
+                link.setAttribute('aria-current', 'page');
+            } else {
+                link.removeAttribute('aria-current');
             }
         });
+
+        if (onRouteChange) onRouteChange(route);
+    }
+
+    function navigate(route) {
+        if (route !== currentRoute()) {
+            const url = route
+                ? `#${route}`
+                : window.location.pathname + window.location.search;
+            history.pushState(null, '', url);
+        }
+        show(route);
+        window.scrollTo(0, 0);
+    }
+
+    navLinks.forEach((link) => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+            navigate(link.dataset.route);
+        });
     });
 
-    // Voliteľné: Zabezpečenie, že sa pri načítaní zobrazí prvá sekcia (napr. ak je prvá sekcia 'home-section')
-    // Ak sa má zobraziť prvá sekcia s triedou .active, nie je to nutné.
+    // Späť / Dopredu a ručne zmenená adresa
+    window.addEventListener('popstate', () => show(currentRoute()));
+
+    // úvodné zobrazenie podľa adresy
+    show(currentRoute());
+
+    return { navigate };
 }
