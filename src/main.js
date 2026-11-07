@@ -7,6 +7,8 @@ import { renderGridLayout } from './js/layoutGrid.js';
 import { renderMasonryLayout } from './js/layoutMasonry.js';
 import { initLightbox } from './js/lightbox.js';
 import { runAnimations } from './js/animations.js';
+import { loadReviews } from './js/loadReviews.js';
+import { renderReviews } from './js/renderReviews.js';
 import { initContactForm } from './js/contactForm.js';
 
 const images = loadImages('home');
@@ -81,7 +83,19 @@ document.addEventListener('DOMContentLoaded', () => {
   //   return;
   // }
 
-  // prepínanie sekcií podľa adresy (#galeria, #o-mne, #kontakt).
+  // recenzie zo src/reviews/*.md
+  const reviewsContainer = document.getElementById('reviewsContainer');
+  if (reviewsContainer) {
+    const reviews = loadReviews();
+    renderReviews(reviewsContainer, reviews);
+
+    // kým nie je žiadna recenzia, položku RECENZIE v menu nezobrazujeme
+    if (!reviews.length) {
+      document.querySelector('.navbar a[data-route="recenzie"]')?.remove();
+    }
+  }
+
+  // prepínanie sekcií podľa adresy (#galeria, #o-mne, #recenzie, #kontakt).
   // Galéria sa vykreslí až keď je potrebná – kto otvorí priamo #kontakt, nesťahuje fotky.
   const router = prepinac((route) => {
     if (route === '') showHome();

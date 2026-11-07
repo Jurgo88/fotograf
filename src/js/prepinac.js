@@ -1,5 +1,5 @@
 /**
- * Prepínanie sekcií s vlastnou adresou pre každú sekciu (napr. .../#kontakt).
+ * Prepínanie sekcií s vlastnou adresou pre každú sekciu (napr. .../#recenzie).
  * - odkaz v menu s atribútom data-route prepne sekciu a zmení adresu
  * - funguje tlačidlo Späť/Dopredu v prehliadači
  * - po obnovení stránky alebo otvorení odkazu sa zobrazí správna sekcia
@@ -10,6 +10,7 @@ const ROUTES = {
     '': 'gallery-section',          // úvod
     'galeria': 'gallery-section',   // celá galéria
     'o-mne': 'about-section',
+    'recenzie': 'reviews-section',
     'kontakt': 'contact-section',
     'extra': 'extra-section',
 };
@@ -19,6 +20,7 @@ const SITE_TITLE = 'Peter Zigo – svadobný fotograf';
 const TITLES = {
     'galeria': 'Galéria',
     'o-mne': 'O mne',
+    'recenzie': 'Recenzie',
     'kontakt': 'Kontakt',
     'extra': 'Extra',
 };

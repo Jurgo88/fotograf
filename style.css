@@ -644,3 +644,82 @@ input, textarea {
     max-width: 320px;
   }
 }
+
+/* ----------------------------------------------
+   9) Reviews section
+---------------------------------------------- */
+.reviews {
+  column-count: 2;
+  column-gap: 2rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.review-card {
+  break-inside: avoid;
+  margin-bottom: 2rem;
+  padding: 2rem;
+  background: #fffdf8;
+  border: 1px solid #eee;
+  border-radius: 6px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  text-align: center;
+}
+
+.review-photo {
+  width: 100%;
+  border-radius: 4px;
+  margin-bottom: 1.5rem;
+  object-fit: cover;
+}
+
+.review-text p {
+  font-size: 1.1rem;
+  font-style: italic;
+  line-height: 1.5;
+  color: #444;
+  margin: 0 0 1rem;
+}
+
+.review-meta {
+  margin-top: 1.2rem;
+}
+
+.review-meta p {
+  margin: 0;
+}
+
+.review-names {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #111;
+  letter-spacing: 0.5px;
+}
+
+.review-details {
+  font-size: 0.85rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.1rem;
+  margin-top: 0.3rem !important;
+}
+
+.reviews-empty {
+  column-span: all;
+  text-align: center;
+  color: #888;
+  font-size: 1.2rem;
+}
+
+@media (max-width: 767px) {
+  .reviews {
+    column-count: 1;
+    padding: 0.5rem;
+  }
+
+  .review-card {
+    padding: 1.2rem;
+    margin-bottom: 1rem;
+  }
+}
