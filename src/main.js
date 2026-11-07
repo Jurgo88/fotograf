@@ -7,6 +7,7 @@ import { renderGridLayout } from './js/layoutGrid.js';
 import { renderMasonryLayout } from './js/layoutMasonry.js';
 import { initLightbox } from './js/lightbox.js';
 import { runAnimations } from './js/animations.js';
+import { initContactForm } from './js/contactForm.js';
 
 const images = loadImages('home');
 const imagesGallery = loadImages('gallery');
@@ -90,6 +91,8 @@ document.addEventListener('DOMContentLoaded', () => {
   if (showMoreBtn) {
     showMoreBtn.addEventListener('click', () => router.navigate('galeria'));
   }
+
+  initContactForm();
 
   //if 5 times cliks on class logo render masonry
   const logo = document.querySelector('.LOGO');

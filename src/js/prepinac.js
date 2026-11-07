@@ -14,6 +14,15 @@ const ROUTES = {
     'extra': 'extra-section',
 };
 
+// titulok záložky prehliadača pre jednotlivé sekcie
+const SITE_TITLE = 'Peter Zigo – svadobný fotograf';
+const TITLES = {
+    'galeria': 'Galéria',
+    'o-mne': 'O mne',
+    'kontakt': 'Kontakt',
+    'extra': 'Extra',
+};
+
 function currentRoute() {
     return decodeURIComponent(window.location.hash.slice(1));
 }
@@ -49,6 +58,8 @@ export function prepinac(onRouteChange) {
                 link.removeAttribute('aria-current');
             }
         });
+
+        document.title = TITLES[route] ? `${TITLES[route]} | ${SITE_TITLE}` : SITE_TITLE;
 
         if (onRouteChange) onRouteChange(route);
     }
