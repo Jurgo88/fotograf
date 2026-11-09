@@ -1,7 +1,7 @@
 ---
-mena: Katka & Martin
-datum: 2025-07
-miesto: Banská Štiavnica
+mena: Bibiana & Marek
+#datum: 2025-07
+#miesto: Banská Štiavnica
 foto: vzor-katka-martin.webp
 ---
-Obaja sme typy, ktoré sa pred objektívom cítia strašne nervózne. Peter to vycítil hneď na prvom stretnutí a pri fotení portrétov nás tak prirodzene navigoval, že sme úplne zabudli, že nás niekto fotí. Výsledok je úžasný.
+Ahoj 😊 nemala som poriadne čas ti ani poďakovať za fotenie .. bol si super, boli sme s tebou nadmieru spokojní 😊 sme radi, že sme si vybrali na fotenie práve teba 😊 ešte raz ďakujeme 🥹❤️
